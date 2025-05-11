@@ -4,24 +4,14 @@ document.getElementById("form-login").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const email = document.getElementById("email").value.trim();
-  const senha = document.getElementById("senha").value.trim();
-
-  if (!email || !senha) {
-    alert("Por favor, preencha todos os campos.");
-    return;
-  }
+  const senha = document.getElementById("senha").value;
 
   try {
     const response = await fetch(API_URL);
-    if (!response.ok) {
-      throw new Error("Erro ao buscar usuários");
-    }
-
     const usuarios = await response.json();
 
-    const usuario = usuarios.find(user => user.email === email && user.password === senha);
+    const usuario = usuarios.find(user => user.email === email && user.senha === senha);
 
-      // redirecionar para a tela inicial ou equivalente nos proximos commits.
     if (usuario) {
       alert("Login realizado com sucesso!");
     } else {
