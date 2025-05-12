@@ -1,3 +1,4 @@
-svg {
+.cell {
+  color: var(--bs-secondary);
 }
 
