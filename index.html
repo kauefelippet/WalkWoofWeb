@@ -43,6 +43,38 @@
             </div>
         </div>
     </header>
+    <section>
+        <div class="container pt-4 pt-xl-5">
+            <div class="row pt-5">
+                <div class="col-auto col-md-9 col-lg-11 col-xl-11 text-center text-md-start mx-auto mx-xl-auto">
+                    <div class="text-center">
+                        <p class="mb-4" style="font-size: 1.6rem;"><strong>Lado a lado com a sustentabilidade!</strong></p>
+                    </div>
+                    <div class="position-relative" style="flex-wrap: wrap;justify-content: flex-end;display: flex;">
+                        <p id="first-description-1" style="text-align: center;padding-top: 16px;">No WalkWoof, acreditamos que cada passeio pode ser também um passo rumo a um futuro mais verde.&nbsp;Este gráfico interativo mostra como a queima de gasolina (linha) é progressivamente compensada por fontes renováveis (zona preenchida),&nbsp;destacando o impacto real de nossas escolhas diárias na redução líquida de CO₂.</p>
+                    </div>
+                    <div class="position-relative" style="flex-wrap: wrap;justify-content: flex-end;display: flex;">    <div class="container py-5">
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8">
+                <label for="volumeSlider" class="form-label">
+                    Volume de gasolina consumido (L):
+                    <span id="volumeValue" class="fw-bold">10</span>
+                </label>
+                <input type="range" class="form-range" id="volumeSlider" min="1" max="100" value="10">
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <canvas id="co2Chart" height="100"></canvas>
+            </div>
+        </div>
+    </div></div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="py-5">
         <div class="container text-center py-5">
             <p class="mb-4" style="font-size: 1.6rem;">Direto do ambiente acadêmico!</p><a href="#"> <img class="m-3" src="assets/img/brands/Logo-Facens-WalkWoof.png" style="width: 30%;"></a>
@@ -124,51 +156,6 @@
                             <div class="card-body text-center px-4 py-5 px-md-5">
                                 <p class="fw-bold text-secondary card-text mb-2">Back-End</p>
                                 <h5 class="fw-bold card-title mb-3">Desenvolvido com Kotlin, Spring Boot, MySQL, Docker, Flyway, entre outros, também por meio de metodologias ágeis</h5><a class="btn btn-secondary btn-sm" role="button" target="_blank" rel="external" href="https://github.com/WalkWoof/walkwoof-api/tree/feature/WOOF-58">Repositório</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="py-5 mt-5">
-        <div class="container py-5">
-            <div class="row mb-5">
-                <div class="col-md-8 col-lg-10 col-xl-6 text-center mx-auto">
-                    <p class="fw-bold text-success mb-2">Avaliações</p>
-                    <h2 class="fw-bold">Quais são as primeiras impressões do WalkWoof?</h2>
-                </div>
-            </div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 d-sm-flex justify-content-sm-center">
-                <div class="col mb-4">
-                    <div class="d-flex flex-column align-items-center align-items-sm-start">
-                        <p class="bg-body-tertiary border rounded border-0 border-light p-4">Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit class dapibus, aliquet morbi.</p>
-                        <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" alt="avatar, icon, placeholder, profile, face, male, man, shape, social media, contour, blank profile picture, anonymous, design, portrait, cutout, avatar, avatar, avatar, avatar, avatar, profile, profile, profile" width="50" height="50" src="assets/img/ga06c75f9df10e8828d5072a805dba197d1a42edfe7345bd95dc3445ca8bbc68e282f53d622be4296a59c57a684a6ace19abf53e21c59e878437133c7387ca5a7_640.png">
-                            <div>
-                                <p class="fw-bold text-primary mb-0">John Smith</p>
-                                <p class="text-muted mb-0">Erat netus</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div class="d-flex flex-column align-items-center align-items-sm-start">
-                        <p class="bg-body-tertiary border rounded border-0 border-light p-4">Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit class dapibus, aliquet morbi.</p>
-                        <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" alt="avatar, icon, placeholder, profile, face, male, man, shape, social media, contour, blank profile picture, anonymous, design, portrait, cutout, avatar, avatar, avatar, avatar, avatar, profile, profile, profile" width="50" height="50" src="assets/img/ga06c75f9df10e8828d5072a805dba197d1a42edfe7345bd95dc3445ca8bbc68e282f53d622be4296a59c57a684a6ace19abf53e21c59e878437133c7387ca5a7_640-1.png">
-                            <div>
-                                <p class="fw-bold text-primary mb-0">John Smith</p>
-                                <p class="text-muted mb-0">Erat netus</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div class="d-flex flex-column align-items-center align-items-sm-start">
-                        <p class="bg-body-tertiary border rounded border-0 border-light p-4">Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit class dapibus, aliquet morbi.</p>
-                        <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" alt="avatar, icon, placeholder, profile, face, male, man, shape, social media, contour, blank profile picture, anonymous, design, portrait, cutout, avatar, avatar, avatar, avatar, avatar, profile, profile, profile" width="50" height="50" src="assets/img/ga06c75f9df10e8828d5072a805dba197d1a42edfe7345bd95dc3445ca8bbc68e282f53d622be4296a59c57a684a6ace19abf53e21c59e878437133c7387ca5a7_640-2.png">
-                            <div>
-                                <p class="fw-bold text-primary mb-0">John Smith</p>
-                                <p class="text-muted mb-0">Erat netus</p>
                             </div>
                         </div>
                     </div>
@@ -297,6 +284,8 @@
     <script src="assets/js/bold-and-bright.js"></script>
     <script src="assets/js/mapconfig.js"></script>
     <script src="assets/js/untitled.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script src="assets/js/graph.js"></script>
 </body>
 
 </html>

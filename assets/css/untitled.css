@@ -2,3 +2,59 @@
   color: var(--bs-secondary);
 }
 
+/* Remove o estilo nativo no WebKit/Blink */
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+/* Track (trilho) */
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: #ddd;
+  border-radius: 2px;
+}
+
+input[type=range]::-moz-range-track {
+  height: 4px;
+  background: #ddd;
+  border-radius: 2px;
+}
+
+/* Thumb no WebKit/Chrome/Safari */
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: rgb(98,58,43);
+  cursor: pointer;
+}
+
+/* Thumb no Firefox */
+
+input[type=range]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border: none;
+  border-radius: 50%;
+  background: rgb(98,58,43);
+  cursor: pointer;
+}
+
+/* Thumb no Edge/IE */
+
+input[type=range]::-ms-thumb {
+  height: 16px;
+  width: 16px;
+  border: none;
+  border-radius: 50%;
+  background: rgb(98,58,43);
+  cursor: pointer;
+}
+
