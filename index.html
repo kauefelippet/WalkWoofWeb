@@ -15,7 +15,7 @@
 
 <body>
     <nav class="navbar navbar-expand-md sticky-top navbar-shrink py-3" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon" style="width: 40px;height: 40px;"><img src="assets/img/WalkWoof%20Web%20Logo.svg" style="filter: invert(100%);"></span><span>WalkWoof</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.html"><span class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon" style="width: 40px;height: 40px;"><img src="assets/img/WalkWoof%20Web%20Logo.svg" style="filter: invert(100%);"></span><span>WalkWoof</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>
@@ -34,7 +34,7 @@
                         <h1 class="fw-bold">A plataforma para passeios saudáveis e seguros com o seu melhor amigo</h1>
                     </div>
                     <div class="position-relative" style="flex-wrap: wrap;justify-content: flex-end;display: flex;height: 458px;">
-                        <div style="position: static;flex: 0 0 45%;transform: translate3d(-15%, 35%, 0);display: flex;height: 313.188px;"><img class="rounded img-fluid" data-bss-parallax-speed="0.8" src="assets/img/products/wmremove-transformed.png" style="backdrop-filter: blur(0px);-webkit-backdrop-filter: blur(0px);filter: brightness(100%);transform: perspective(0px) skew(0deg);"></div>
+                        <div style="position: static;flex: 0 0 45%;transform: translate3d(-15%, 35%, 0);display: flex;height: 313.188px;"><img class="rounded img-fluid object-fit-cover" data-bss-parallax-speed="0.8" src="assets/img/products/wmremove-transformed.png" style="backdrop-filter: blur(0px);-webkit-backdrop-filter: blur(0px);filter: brightness(100%);transform: perspective(0px) skew(0deg);"></div>
                         <div style="position: static;flex: 0 0 45%;transform: translate3d(-15%, 35%, 0);height: 200px;margin-top: 100px;">
                             <p id="first-description" style="text-align: center;">O WalkWoof foi criado para atender às necessidades de donos de cães em ambientes urbanos, que frequentemente enfrentam desafios para passear ou encontrar passeadores confiáveis e garantir que seus pets recebam o exercício adequado.&nbsp;</p>
                         </div>
@@ -51,11 +51,12 @@
                         <p class="mb-4" style="font-size: 1.6rem;"><strong>Lado a lado com a sustentabilidade!</strong></p>
                     </div>
                     <div class="position-relative" style="flex-wrap: wrap;justify-content: flex-end;display: flex;">
-                        <p id="first-description-1" style="text-align: center;padding-top: 16px;">No WalkWoof, acreditamos que cada passeio pode ser também um passo rumo a um futuro mais verde.&nbsp;Este gráfico interativo mostra como a queima de gasolina (linha) é progressivamente compensada por fontes renováveis (zona preenchida),&nbsp;destacando o impacto real de nossas escolhas diárias na redução líquida de CO₂.</p>
+                        <p id="first-description-1" style="text-align: center;padding-top: 16px;">No WalkWoof, cada passeio ajuda a limpar o ar: à medida que você reduz o uso de gasolina (linha), nossas fontes de energia limpa compensam parte da emissão (área colorida), mostrando de forma clara como pequenas escolhas do dia a dia geram menos CO₂.</p>
                     </div>
-                    <div class="position-relative" style="flex-wrap: wrap;justify-content: flex-end;display: flex;">    <div class="container py-5">
+                    <div class="position-relative" style="flex-wrap: wrap;justify-content: flex-end;display: flex;"><section id="graficos-carbono" class="container py-5">
+  <h2 class="text-center mb-4">Comparativo de Emissões de CO₂</h2>
 
-        <div class="row justify-content-center mb-4">
+            <div class="row justify-content-center mb-4">
             <div class="col-md-8">
                 <label for="volumeSlider" class="form-label">
                     Volume de gasolina consumido (L):
@@ -64,13 +65,28 @@
                 <input type="range" class="form-range" id="volumeSlider" min="1" max="100" value="10">
             </div>
         </div>
+    
+  <!-- Gráfico 1: apenas emissão pura -->
+  <div class="mb-5">
+    <h5 class="text-center">Emissão Atual (sem compensação)</h5>
+    <canvas id="co2ChartOnly" height="65"></canvas>
+  </div>
 
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <canvas id="co2Chart" height="100"></canvas>
-            </div>
-        </div>
-    </div></div>
+  <!-- Gráfico 2: emissão líquida com "bateria" -->
+  <div>
+    <h5 class="text-center">Emissão Líquida (com compensação)</h5>
+    <canvas id="co2Chart" height="65"></canvas>
+  </div>
+</section>
+</div>
+                    <div class="position-relative" style="flex-wrap: wrap;justify-content: flex-end;display: flex;">
+                        <p id="first-description-2" style="text-align: center;padding-top: 16px;">Usamos fontes de energia limpa para gerar eletricidade sem queimar combustíveis fósseis. Essas fontes financiam projetos que capturam ou evitam emissões de CO₂ (compensação), gerando créditos de carbono que “abatem” parte do que foi emitido, o que no nosso modelo aparece como valores negativos (mais compensação que emissão).</p>
+                        <p id="first-description-3" style="text-align: center;padding-top: 16px;">O gráfico linear representa a emissão pura, pois cada litro de gasolina gera sempre a mesma quantidade de CO₂ (≈2,31 kg/L), enquanto o gráfico com curva mostra a compensação crescente que satura com o tempo, ilustrando o “retorno decrescente” típico das iniciativas ambientais (diminishing returns), ou seja,&nbsp;quanto mais investimos, mais difícil se torna dobrar a compensação.</p>
+                    </div>
+                </div>
+                <div class="col-auto col-md-9 col-lg-11 col-xl-11 text-center text-md-start mx-auto mx-xl-auto">
+                    <div class="text-center"></div>
+                    <div class="position-relative" style="flex-wrap: wrap;justify-content: flex-end;display: flex;"></div>
                 </div>
             </div>
         </div>
@@ -97,7 +113,7 @@
                                         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6"></path>
                                     </svg></div>
                                 <h5 class="fw-bold card-title">Agendamento de Passeios</h5>
-                                <p class="text-muted card-text mb-4">Usuários podem agendar, modificar e cancelar passeios facilmente.</p><button class="btn btn-primary shadow" type="button">Saiba mais</button>
+                                <p class="text-muted card-text mb-4">Usuários podem agendar, modificar e cancelar passeios facilmente.</p><a class="btn btn-primary shadow" role="button" href="services.html">Saiba mais</a>
                             </div>
                         </div>
                     </div>
@@ -109,7 +125,7 @@
                                         <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"></path>
                                     </svg></div>
                                 <h5 class="fw-bold card-title">Monitoramento Real Time</h5>
-                                <p class="text-muted card-text mb-4">Acompanhe as atividades de seu pet em tempo real durante os passeios.</p><button class="btn btn-primary shadow" type="button">Saiba mais</button>
+                                <p class="text-muted card-text mb-4">Acompanhe as atividades de seu pet em tempo real durante os passeios.</p><a class="btn btn-primary shadow" role="button" href="services.html">Saiba mais</a>
                             </div>
                         </div>
                     </div>
@@ -120,7 +136,7 @@
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7401 16.3185C12.035 17.1126 11.0808 17.6806 10 17.9V21C10 21.5523 9.55228 22 9 22C8.44772 22 8 21.5523 8 21V17.9C5.71776 17.4367 4 15.419 4 13V7C4 4.23858 6.23858 2 9 2C11.6087 2 13.7508 3.99781 13.9797 6.54693C14.5726 6.1993 15.2631 6 16 6C18.2091 6 20 7.79086 20 10V14C20 15.8638 18.7252 17.4299 17 17.874V21C17 21.5523 16.5523 22 16 22C15.4477 22 15 21.5523 15 21V17.874C14.0747 17.6358 13.279 17.075 12.7401 16.3185ZM12 7V13C12 14.3062 11.1652 15.4175 10 15.8293V13C10 12.4477 9.55228 12 9 12C8.44772 12 8 12.4477 8 13V15.8293C6.83481 15.4175 6 14.3062 6 13V7C6 5.34315 7.34315 4 9 4C10.6569 4 12 5.34315 12 7ZM17 15.7324V13C17 12.4477 16.5523 12 16 12C15.4477 12 15 12.4477 15 13V15.7324C14.4022 15.3866 14 14.7403 14 14V10C14 8.89543 14.8954 8 16 8C17.1046 8 18 8.89543 18 10V14C18 14.7403 17.5978 15.3866 17 15.7324Z" fill="currentColor"></path>
                                     </svg></div>
                                 <h5 class="fw-bold card-title">Práticas Sustentáveis</h5>
-                                <p class="text-muted card-text mb-4">Incentiva opções ecológicas de mobilidade a pé, contribuindo para o meio-ambiente e saúde do usuário.</p><button class="btn btn-primary shadow" type="button">Saiba mais</button>
+                                <p class="text-muted card-text mb-4">Incentiva opções ecológicas de mobilidade a pé, contribuindo para o meio-ambiente e saúde do usuário.</p><a class="btn btn-primary shadow" role="button" href="services.html">Saiba mais</a>
                             </div>
                         </div>
                     </div>
@@ -131,7 +147,7 @@
                                         <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"></path>
                                     </svg></div>
                                 <h5 class="fw-bold card-title">Sistema de Feedback</h5>
-                                <p class="text-muted card-text mb-4">Possui sistema de avaliação dos passeios realizados para garantir a qualidade na prestação dos serviços.</p><button class="btn btn-primary shadow" type="button">Saiba mais</button>
+                                <p class="text-muted card-text mb-4">Possui sistema de avaliação dos passeios realizados para garantir a qualidade na prestação dos serviços.</p><a class="btn btn-primary shadow" role="button" href="services.html">Saiba mais</a>
                             </div>
                         </div>
                     </div>
@@ -147,7 +163,7 @@
                         <div class="card bg-primary-subtle">
                             <div class="card-body text-center px-4 py-5 px-md-5" style="height: 278.766px;">
                                 <p class="fw-bold text-primary card-text mb-2">Front-End</p>
-                                <h5 class="fw-bold card-title mb-3">Desenvolvido com Bootstrap, por meio de metodologias ágeis</h5><a class="btn btn-primary btn-sm" role="button" href="https://github.com/CampeloGabriel1/WalkWoof-Web" target="_blank" rel="external" style="margin: 24px;">Repositório</a>
+                                <h5 class="fw-bold card-title mb-3">Desenvolvido com Bootstrap, por meio de metodologias ágeis</h5><a class="btn btn-primary btn-sm" role="button" href="https://github.com/kauefelippet/WalkWoofWeb" target="_blank" rel="external" style="margin: 24px;">Repositório</a>
                             </div>
                         </div>
                     </div>

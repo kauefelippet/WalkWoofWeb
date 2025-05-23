@@ -1,79 +1,75 @@
-// Parâmetros
-const alpha = 2.31;   // kg CO₂ por litro de gasolina
-const Cmax = 200;    // capacidade máxima renovável (kg CO₂)
-const beta = 0.05;   // taxa de saturação exponencial
+document.addEventListener('DOMContentLoaded', () => {
+  // Parâmetros
+  const alpha = 2.31;   // kg CO₂ por litro
+  const Cmax  = 200;    // capacidade de compensação
+  const beta  = 0.05;   // taxa de saturação
 
-// Cálculo da emissão líquida
-function calcularEmissaoLiquida(v) {
-        const E = alpha * v;
-        const C = Cmax * (1 - Math.exp(-beta * v));
-        return E - C;
-}
+  // Funções de cálculo
+  function emissaoPura(v) {
+    return alpha * v;
+  }
+  function emissaoLiquida(v) {
+    const C = Cmax * (1 - Math.exp(-beta * v));
+    return emissaoPura(v) - C;
+  }
 
-// Referências aos elementos
-const slider = document.getElementById('volumeSlider');
-const label = document.getElementById('volumeValue');
-const ctx = document.getElementById('co2Chart').getContext('2d');
+  // Elementos
+  const slider = document.getElementById('volumeSlider');
+  const label  = document.getElementById('volumeValue');
+  const ctxOnly = document.getElementById('co2ChartOnly').getContext('2d');
+  const ctxComp = document.getElementById('co2Chart').getContext('2d');
 
-  // inicializa o gráfico
-  const co2Chart = new Chart(ctx, {
+  // Cria o gráfico de emissão pura
+  const chartOnly = new Chart(ctxOnly, {
+    type: 'line',
+    data: {
+      labels: [ +slider.value ],
+      datasets: [{
+        label: 'CO₂ Emitido (kg)',
+        data: [ emissaoPura(+slider.value) ],
+        borderColor: 'rgb(98,58,43)',
+        borderWidth: 2,
+        fill: false,
+        tension: 0.4,
+        pointRadius: 5
+      }]
+    },
+    options: { scales: { x: { title: { display: true, text: 'Litros' } }, 
+                         y: { beginAtZero: true, title: { display: true, text: 'kg CO₂' } } } }
+  });
+
+  // Cria o gráfico de emissão líquida (já existente)
+  const chartComp = new Chart(ctxComp, {
     type: 'line',
     data: {
       labels: [ +slider.value ],
       datasets: [{
         label: 'Emissão Líquida (kg CO₂)',
-        data: [ calcularEmissaoLiquida(+slider.value) ],
+        data: [ emissaoLiquida(+slider.value) ],
+        borderColor: 'rgb(98,58,43)',
+        backgroundColor: 'rgba(98,58,43,0.2)',
+        borderWidth: 2,
         fill: true,
         tension: 0.4,
-        pointRadius: 5,
-        borderWidth: 2,
-        borderColor: 'rgb(98,58,43)',
-        backgroundColor: 'rgba(98,58,43,0.2)'
+        pointRadius: 5
       }]
-        },
-        options: {
-            responsive: true,
-            interaction: {
-                mode: 'index',
-                intersect: false
-            },
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Volume de Gasolina (L)'
-                    },
-                    min: 0,
-                    max: 100
-                },
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Emissão Líquida de CO₂ (kg)'
-                    }
-                }
-            },
-            plugins: {
-                tooltip: {
-                    callbacks: {
-                        label: ctx => `${ctx.formattedValue} kg CO₂`
-                    }
-                },
-                legend: {
-                    display: false
-                }
-            }
-        }
-    });
+    },
+    options: { scales: { x: { title: { display: true, text: 'Litros' } }, 
+                         y: { beginAtZero: true, title: { display: true, text: 'kg CO₂' } } } }
+  });
 
-    // Atualiza o gráfico e o valor exibido ao mover o slider
-    slider.addEventListener('input', () => {
-        const v = +slider.value;
-        label.textContent = v;
+  // Atualiza ambos ao mover o slider
+  slider.addEventListener('input', () => {
+    const v = +slider.value;
+    label.textContent = v;
+    const xs = Array.from({ length: v }, (_, i) => i + 1);
 
-        // Atualiza dados
-        co2Chart.data.labels = Array.from({ length: v }, (_, i) => i + 1);
-        co2Chart.data.datasets[0].data = co2Chart.data.labels.map(x => calcularEmissaoLiquida(x));
-        co2Chart.update();
-    });
+    chartOnly.data.labels = xs;
+    chartOnly.data.datasets[0].data = xs.map(emissaoPura);
+    chartOnly.update();
+
+    chartComp.data.labels = xs;
+    chartComp.data.datasets[0].data = xs.map(emissaoLiquida);
+    chartComp.update();
+  });
+});
