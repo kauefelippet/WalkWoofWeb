@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('username-label').textContent = `${user.name} (Walker)`;
     document.getElementById('welcome-message').textContent =
       `Saudações, ${user.name}! Novas solicitações aguardam por você`;
+    document.getElementById('activity-span').textContent =
+      `Walkers também podem solicitar atividades!`;
 
     let cachedActivities = [];
 
